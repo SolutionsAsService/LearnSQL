@@ -1,27 +1,31 @@
-# DESIGN-LOG: LearnSQL
+# DESIGN-LOG: LearnSQL (DADA-Lite run)
 
-**Run type: bounded, not full.** This was a rebuild of an existing repository (eleven `.sql` files and a one-word README) in the shape of `esoteric-languages`. It did **not** convene the DADA critic panel, so it does not meet the dada stop conditions and should not be rated or entered in `ledger/runs.jsonl` as a full run. A full adaptive run is the open item below.
+**Run type: DADA-Lite** (by the owner's ruling, 8 Nov 2026). **Mode: Adaptive** (a public of learners). One build round, measure-first, no critic panel was convened; the owner graded the result A, which is recorded below.
 
-**Mode: Adaptive** (a public of learners; advanced and acceptable both have to hold).
+## Plan
+Rebuild an existing repository (eleven `.sql` files, a one-word README) as a multi-page static site in the shape of `esoteric-languages`. Seed: stance `Make It Bigger (Paula Scher)`, rule `Grid Systems in Graphic Design (Josef Müller-Brockmann)`. The signature graphic is the landing poster: one tile per query carrying the figure the query returned.
 
-## What was decided
-- **Landing = one poster of the whole site, a computed figure per tile** (dada-lessons grade A shape): INSERT +1 row, UPDATE 1 row changed, DELETE −3 rows, COUNT 7, SUM 550.75, AVG 25.8571, GROUP BY 5 groups, INNER 6, LEFT 9, RIGHT 7, FULL OUTER 10.
-- **Every claim has a source in the repo.** The `.sql` files are read by the build, executed, and their output is what the pages print. The dataset is declared invented. Nothing else is claimed.
-- **Join rows are marked in words, not colour alone:** `both`, `LEFT only`, `RIGHT only`. Insert/update/delete rows are marked `new`, `changed`, `removed`.
-- **Venn diagrams drawn from the join kind**, not from an image.
-- Build guarantees: every query run; figures pinned in `EXPECT`; internal links and fragments verified.
+## Moves
+- **M1 SOURCE. The repo's own `.sql` files are the content.** The build parses and executes each in SQLite on invented seed data; every table and figure printed is what came back. Measure: 11 of 11 queries run, figures pinned in `EXPECT`, build fails on drift.
+- **M2 POSTER.** Home is one poster of all eleven results plus an About tile (12 tiles, no empty cell). Measure: whole poster inside the first 800px at 1280.
+- **M3 MARK IN WORDS.** Join rows say `both`, `LEFT only`, `RIGHT only`; DML rows say `new`, `changed`, `removed`. Venn diagrams are drawn from the join kind.
+- **M4 DELETE CLAIMS.** Data declared invented; About states that MySQL has no FULL OUTER JOIN; "not yet deployed" stated in README.
 
-## Measured (headless Chromium, 360 / 390 / 1280 px, all five pages)
-| Probe | Result |
-|---|---|
-| Horizontal overflow | 0 px on every page and width |
-| Interactive targets under 44 px (excluding the off-screen skip link and in-prose links) | 0 |
-| Text under 11 px | 0 (after fixing the Venn labels, which were 9 px) |
-| Figures overflowing their tile | 2 found (550.75, 25.8571), fixed by a smaller size for figures over 4 characters |
-| Empty grid cell on the poster | 1 found, filled with the About tile |
+## Measure
+| Step | Tool | Result |
+|---|---|---|
+| Own probes, 5 pages x 3 widths | Playwright | overflow 0; 2 figures overflowing tiles and 1 empty cell found and fixed |
+| `audit.py` round 1, widths 1280/390/320 | dada-lite | **TOTAL 161**: SQL text contrast 1.11:1 (inline `code` background leaked into the dark block), source links 17px tall |
+| After fix | dada-lite | **TOTAL 0** |
+| Look at the diagram | screenshot | "orders" clipped at the edge, then labels colliding; fixed (labels under circles, spaced) |
 
-## Not done (open frontier)
-- No critic panel, no contrast measurement, no reduced-motion or dark-mode screenshots, no `measure.py` presets.
-- No answers to "try it yourself": the site is read-only. An in-browser editor (sql.js) would be the natural next move.
-- The `.sql` files target the dialect SQLite accepts; MySQL has no `FULL OUTER JOIN` (stated on About).
-- Not deployed; the address in the README is intended, not live.
+The audit found what my own probes did not: contrast. Own probes covered overflow, targets and text size, not contrast.
+
+## Stop check
+Audit clean (0). Boldest move (the poster) pushed once and measured. No panel round was run, so the Provocateur, Inclusion, Usability and Craft seats never sat; this is open if the run is ever re-opened as a full or panelled lite run.
+
+## Open
+Not deployed (README address is intended). No in-browser SQL editor. Dark mode and reduced motion not screenshotted.
+
+## Human grade
+**A.** 8 Nov 2026. The owner: "That's very good thing count it as dada lite that's what dada lite is for that's a an A". The run did what lite is for: one measure-first pass and cheap fixes on a site whose content was already true and runnable.

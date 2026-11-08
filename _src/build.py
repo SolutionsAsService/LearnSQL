@@ -93,9 +93,9 @@ def venn(kind, size=120):
     if R: parts.append('<circle cx="82" cy="50" r="38" class="fr"/>')
     parts.append(f'<circle cx="46" cy="50" r="38" clip-path="url(#c-{kind})" class="fb"/>')
     parts.append('<circle cx="46" cy="50" r="38" class="ol"/><circle cx="82" cy="50" r="38" class="ol"/>')
-    parts.append('<text x="26" y="54" class="vt">users</text><text x="102" y="54" class="vt">orders</text>')
+    parts.append('<text x="34" y="106" text-anchor="middle" class="vt">users</text><text x="96" y="106" text-anchor="middle" class="vt">orders</text>')
     label = {'inner': 'only the overlap', 'left': 'all of users', 'right': 'all of orders', 'full': 'everything'}[kind]
-    return (f'<svg class="venn" viewBox="0 0 128 100" role="img" aria-label="Venn diagram: {label}">'
+    return (f'<svg class="venn" viewBox="0 0 128 112" role="img" aria-label="Venn diagram: {label}">'
             + ''.join(parts) + '</svg>')
 
 
