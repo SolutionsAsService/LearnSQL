@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://learnsql.shadw.app/sitemap.xml
